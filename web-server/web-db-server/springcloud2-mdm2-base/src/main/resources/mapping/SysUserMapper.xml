@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dazd.api.persistence.mybatis.SysUserMapper">
+  <resultMap id="ListMap" type="cn.dazd.entity.base.SysUser" >
+  </resultMap>
+  
+  <resultMap id="DetailMap" type="cn.dazd.entity.base.SysUser" extends="ListMap">
+	<id column="User_ID" jdbcType="INTEGER" property="userId" />
+    <result column="departments" jdbcType="VARCHAR" property="departments" />
+    <result column="grants" jdbcType="VARCHAR" property="grants" />
+    <result column="Member_ID" jdbcType="INTEGER" property="memberId" />
+    <result column="stock_id" jdbcType="INTEGER" property="stockId" />
+    <result column="LoginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="OwnerName" jdbcType="VARCHAR" property="ownername" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="MarkForUse" jdbcType="INTEGER" property="markforuse" />
+    <result column="PassChanged" jdbcType="INTEGER" property="passchanged" />
+
+  </resultMap>
+  
+
+  
+</mapper>

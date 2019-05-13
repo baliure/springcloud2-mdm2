@@ -1,0 +1,58 @@
+###服务启动端口号
+server:
+  port: 9010
+
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+           defaultZone: http://10.253.7.63:8100/eureka,http://10.253.7.63:8200/eureka,http://10.253.7.63:8300/eureka
+
+           
+###因为该应用为注册中心，不会注册自己
+    register-with-eureka: true
+    ####需要检索服务
+    fetch-registry: true
+# 心跳检测检测与续约时间
+# 测试时将值设置设置小些，保证服务关闭后注册中心能及时踢出服务
+  instance:
+###Eureka客户端向服务端发送心跳的时间间隔，单位为秒（客户端告诉服务端自己会按照该规则）  
+    lease-renewal-interval-in-seconds: 1
+####Eureka服务端在收到最后一次心跳之后等待的时间上限，单位为秒，超过则剔除（客户端告诉服务端按照此规则等待自己）
+    lease-expiration-duration-in-seconds: 2    
+
+
+###设置feign客户端超时时间
+ribbon:
+###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+ ReadTimeout: 5000
+###指的是建立连接后从服务器读取到可用资源所用的时间。 
+ ConnectTimeout: 5000
+
+logging:
+  level: 
+    learning: trace
+    
+###服务名称(服务注册到eureka名称)  
+spring:
+  application:
+    name: app-mdm-base
+  datasource:
+    username: mdmuser
+    password: Mdm1219
+    url: jdbc:mysql://10.253.7.54:3306/mdm90?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+ 
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: cn.dazd.entity
+ 
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+
+
+
